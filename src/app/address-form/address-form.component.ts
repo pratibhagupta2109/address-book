@@ -131,7 +131,7 @@ export class AddressFormComponent implements OnInit {
         name: next["name"],
         email: next["email"]
       } as Address)
-      .then(function(response) {
+      .then(response => {
         if (response && response["status"] === "exists") {
           this.showAlert = true;
         }
