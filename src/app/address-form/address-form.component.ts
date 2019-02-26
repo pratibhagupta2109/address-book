@@ -91,7 +91,8 @@ export class AddressFormComponent implements OnInit {
           if (record.hasOwnProperty("email") && record.hasOwnProperty("name")) {
             this.uploadError = false;
             this.uploadStatus = "";
-            this.sendAll(result);
+            this.processNext(0, result);
+            // this.sendAll(result);
             // console.log("responses: ", responses);
 
             // result.forEach(element => {
@@ -117,6 +118,42 @@ export class AddressFormComponent implements OnInit {
         console.log("result: ", result);
       };
     }
+  }
+
+  processNext(currentIndex, result) {
+    if (currentIndex >= result.length) {
+      return;
+    }
+
+    var next = result[currentIndex++];
+    this.addressService
+      .addAddress({
+        name: next["name"],
+        email: next["email"]
+      } as Address)
+      .then(function(response) {
+        if (response && response["status"] === "exists") {
+          this.showAlert = true;
+        }
+        this.alertService.confirmThis(
+          "Email <" +
+            response["email"] +
+            "> already exists. Want to replace name ?",
+          () => {
+            console.log("Yes");
+            this.update(response["name"], response["email"]);
+            this.showAlert = false;
+            //ACTION: Do this If user says YES
+          },
+          function() {
+            console.log("No");
+            this.showAlert = false;
+            //ACTION: Do this if user says NO
+          }
+        );
+
+        this.processNext(currentIndex, result);
+      });
   }
 
   async sendAll(results) {
