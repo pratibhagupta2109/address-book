@@ -86,6 +86,7 @@ export class AddressFormComponent implements OnInit {
         let result = this.csvJSON(csv);
         try {
           let record = result[0];
+          console.log(".......record", record);
           if (record.hasOwnProperty("email") && record.hasOwnProperty("name")) {
             this.uploadError = false;
             this.uploadStatus = "";
