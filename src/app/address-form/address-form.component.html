@@ -1,0 +1,50 @@
+<div class="container">
+  <form #addressForm="ngForm">
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input
+        required
+        [(ngModel)]="address.name"
+        name="name"
+        id="name"
+        #name="ngModel"
+      />
+      <div class="alert alert-danger" *ngIf="name.touched && !name.valid">
+        Name is required.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input
+        required
+        [(ngModel)]="address.email"
+        id="email"
+        name="email"
+        #email="ngModel"
+      />
+      <div class="alert alert-danger" *ngIf="email.touched && !email.valid">
+        Email is required.
+      </div>
+    </div>
+    <!-- (click) passes input value to add() and then clears the input -->
+    <button
+      (click)="add(name.value, email.value); name.value = ''; email.value = ''"
+      class="btn btn-primary"
+    >
+      add
+    </button>
+    <div class="form-group">
+      <label for="upload">OR upload a CSV:</label>
+      <input
+        type="file"
+        class="upload"
+        (change)="changeListener($event.target.files)"
+      />
+      <div class="alert alert-danger" [hidden]="!uploadError">
+        {{ uploadStatus }}
+      </div>
+    </div>
+    <alert [hidden]="!showAlert"></alert>
+    {{ address.name + " " + address.email }}
+  </form>
+</div>

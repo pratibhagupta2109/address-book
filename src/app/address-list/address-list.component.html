@@ -1,0 +1,9 @@
+<ul class="addresses">
+  <li *ngFor="let address of addresses">
+    <span class="badge">{{ address.email }}</span>
+    <span>{{ address.name }}</span>
+    <!-- <a routerLink="/detail/{{ address.email }}">
+      <span class="badge">{{ address.email }}</span> {{ address.name }}
+    </a> -->
+  </li>
+</ul>
