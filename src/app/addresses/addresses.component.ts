@@ -25,15 +25,15 @@ export class AddressesComponent implements OnInit {
       .subscribe(addresses => (this.addresses = addresses));
   }
 
-  add(name: string, email: string): void {
-    name = name.trim();
-    if (!name) {
-      return;
-    }
-    this.addressService.addAddress({ name } as Address).subscribe(address => {
-      this.addresses.push(address);
-    });
-  }
+  // add(name: string, email: string): void {
+  //   name = name.trim();
+  //   if (!name) {
+  //     return;
+  //   }
+  //   this.addressService.addAddress({ name } as Address).subscribe(address => {
+  //     this.addresses.push(address);
+  //   });
+  // }
 
   delete(address: Address): void {
     this.addresses = this.addresses.filter(h => h !== address);
