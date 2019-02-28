@@ -1,10 +1,24 @@
+<nav class="navbar navbar-toggleable-md fixed-top navbar-inverse bg-inverse">
+  <a class="navbar-brand" href="#">Address Book Sample App</a>
+</nav>
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
   <!-- <h1>Welcome to {{ title }}!</h1> -->
 </div>
-<div>
-  <address-form></address-form>
-  <address-list></address-list>
+<div class="container">
+  <div class="row row-offcanvas row-offcanvas-right">
+    <div class="col-12 col-md-9">
+      <div class="jumbotron">
+        <h2>Add a new address</h2>
+        <address-form></address-form>
+      </div>
+    </div>
+
+    <div class="col-6 col-md-3 sidebar-offcanvas" id="sidebar">
+      <address-list></address-list>
+    </div>
+  </div>
 </div>
+
 <!-- <app-addresses></app-addresses>
 <router-outlet></router-outlet> -->

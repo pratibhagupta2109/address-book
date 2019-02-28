@@ -17,7 +17,7 @@ export class AddressListComponent implements OnInit {
     // console.log("in address-list", this.addresses);
   }
 
-  getAddresses(): void {
+  getAddresses() {
     this.addressService
       .getAddresses()
       .subscribe(addresses => (this.addresses = addresses));

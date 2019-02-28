@@ -1,9 +1,14 @@
-<ul class="addresses">
-  <li *ngFor="let address of addresses">
-    <span class="badge">{{ address.email }}</span>
-    <span>{{ address.name }}</span>
-    <!-- <a routerLink="/detail/{{ address.email }}">
-      <span class="badge">{{ address.email }}</span> {{ address.name }}
-    </a> -->
-  </li>
-</ul>
+<div class="list-group address-list">
+  <div *ngIf="addresses">
+    <p class="list-group-item active">Address List</p>
+    <div *ngFor="let address of addresses">
+      <p class="list-group-item">
+        <b>{{ address.email }}</b> : {{ address.name }}
+      </p>
+    </div>
+  </div>
+  <div *ngIf="!addresses || addresses.length == 0">
+    <p class="list-group-item active">List</p>
+    <p class="list-group-item">No addresses.</p>
+  </div>
+</div>

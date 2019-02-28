@@ -4,10 +4,11 @@ from google.appengine.ext import ndb
 class Address(ndb.Model):
     name = ndb.StringProperty()
     email = ndb.StringProperty()
+    last_updated = ndb.DateTimeProperty(auto_now=True)
 
 
 def AllAddresses():
-    return Address.query()
+    return Address.query().order(-Address.last_updated)
 
 
 def UpdateAddress(email, name):

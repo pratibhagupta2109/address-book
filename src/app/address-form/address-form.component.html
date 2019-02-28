@@ -27,12 +27,13 @@
       </div>
     </div>
     <!-- (click) passes input value to add() and then clears the input -->
-    <!-- <button
+    <button
       (click)="add(name.value, email.value); name.value = ''; email.value = ''"
       class="btn btn-primary"
     >
       add
-    </button> -->
+    </button>
+    <hr />
     <div class="form-group">
       <label for="upload">OR upload a CSV:</label>
       <input
@@ -43,8 +44,14 @@
       <div class="alert alert-danger" [hidden]="!uploadError">
         {{ uploadStatus }}
       </div>
+      <div class="alert alert-success" [hidden]="uploadStatus != 'Success'">
+        {{ uploadStatus }}
+      </div>
     </div>
-    <alert [hidden]="!showAlert"></alert>
-    {{ address.name + " " + address.email }}
+    <!-- <template #alertContainer></template> -->
+    <div id="alert-container">
+      <alert [hidden]="!showAlert"></alert>
+      {{ address.name + " " + address.email }}
+    </div>
   </form>
 </div>

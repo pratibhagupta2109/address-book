@@ -15,6 +15,8 @@ import { AddressFormComponent } from "./address-form/address-form.component";
 import { AddressListComponent } from "./address-list/address-list.component";
 import { AlertComponent } from "./alert/alert.component";
 import { AlertService } from "./alert.service";
+
+// import { BrowserModule } from "@angular/platform-browser";
 // import { MessagesComponent } from "./messages/messages.component";
 
 @NgModule({
@@ -28,7 +30,10 @@ import { AlertService } from "./alert.service";
     // MessagesComponent
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
-  providers: [AddressService, AlertService],
+  providers: [
+    AddressService
+    // AlertService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

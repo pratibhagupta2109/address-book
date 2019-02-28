@@ -22,22 +22,22 @@ export class AddressService {
     private messageService: MessageService
   ) {}
 
-  // /** GET addresses from the server */
-  // getAddresses(): Observable<Address[]> {
-  //   return this.http.get<Address[]>(this.addressesUrl + "/query").pipe(
-  //     tap(_ => this.log("fetched addresses")),
-  //     catchError(this.handleError("getAddresses", []))
-  //   );
-  // }
-
   /** GET addresses from the server */
-  getAddresses() {
-    // return [
-    //   { email: "user1@example.com", name: "user1" },
-    //   { email: "user2@example.com", name: "user2" }
-    // ];
-    return this.http.get<Address[]>(this.addressesUrl + "/query");
+  getAddresses(): Observable<Address[]> {
+    return this.http.get<Address[]>(this.addressesUrl + "/query").pipe(
+      tap(_ => this.log("fetched addresses")),
+      catchError(this.handleError("getAddresses", []))
+    );
   }
+
+  // /** GET addresses from the server */
+  // getAddresses() {
+  //   // return [
+  //   //   { email: "user1@example.com", name: "user1" },
+  //   //   { email: "user2@example.com", name: "user2" }
+  //   // ];
+  //   return this.http.get<Address[]>(this.addressesUrl + "/query");
+  // }
 
   // getAddresses() {
   //   return this.http.get(this.addressesUrl + "/query").subscribe(data => {
@@ -79,24 +79,24 @@ export class AddressService {
     );
   }
 
-  // /** POST: add a new address to the server */
-  // addAddress(address: Address): Observable<Address> {
-  //   return this.http
-  //     .post<Address>(this.addressesUrl + "/insert", address, httpOptions)
-  //     .pipe(
-  //       tap((newAddress: Address) =>
-  //         // console.log('in addAddresService' + newAddress);
-  //         this.log(`added address w/ id=${newAddress.email}`)
-  //       ),
-  //       catchError(this.handleError<Address>("addAddress"))
-  //     );
-  // }
-
-  addAddress(address: Address) {
+  /** POST: add a new address to the server */
+  addAddress(address: Address): Observable<Address> {
     return this.http
-      .post(this.addressesUrl + "/insert", address, httpOptions)
-      .toPromise();
+      .post<Address>(this.addressesUrl + "/insert", address, httpOptions)
+      .pipe(
+        tap((newAddress: Address) =>
+          // console.log('in addAddresService' + newAddress);
+          this.log(`added address w/ id=${newAddress.email}`)
+        ),
+        catchError(this.handleError<Address>("addAddress"))
+      );
   }
+
+  // addAddress(address: Address) {
+  //   return this.http
+  //     .post(this.addressesUrl + "/insert", address, httpOptions)
+  //     .toPromise();
+  // }
 
   // /** POST: add a new address to the server */
   // addAddress(address: Address): Observable<Address> {
