@@ -9,9 +9,19 @@ import { MessageService } from "./message.service";
 import { ADDRESSES } from "./addresses-mock";
 import { switchMap } from "rxjs/operators";
 
+
 const httpOptions = {
-  headers: new HttpHeaders({ "Content-Type": "application/json" })
+  /* headers: new HttpHeaders({
+    "Content-Type": "application/json",
+    // "Access-Control-Allow-Origin": "https://address-book-pratibha.appspot.com"
+  }) */
+
+    headers: new HttpHeaders({
+      "Content-Type": "text/plain",
+      // "Access-Control-Allow-Origin": "https://address-book-pratibha.appspot.com"
+    })
 };
+
 
 @Injectable({ providedIn: "root" })
 export class AddressService {
@@ -24,7 +34,7 @@ export class AddressService {
 
   /** GET addresses from the server */
   getAddresses(): Observable<Address[]> {
-    return this.http.get<Address[]>(this.addressesUrl + "/query").pipe(
+    return this.http.get<Address[]>(this.addressesUrl + "/query", httpOptions).pipe(
       tap(_ => this.log("fetched addresses")),
       catchError(this.handleError("getAddresses", []))
     );

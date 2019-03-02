@@ -51,6 +51,7 @@ export class AddressFormComponent implements OnInit {
 
         // this.addresses.push(address);
       });
+    this.setDelay(1, 5);
     console.log("existingAdd... in add function: ", this.existingAddresses);
     var emails = this.existingAddresses
       .map(item => {
@@ -82,6 +83,11 @@ export class AddressFormComponent implements OnInit {
     }
   }
 
+  setDelay(i, max) {
+  setTimeout(function () {
+    console.log(i);
+  }, 1000);
+    }
   update(name: string, email: string): void {
     console.log("in update method: ", name, email);
 
