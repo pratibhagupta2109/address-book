@@ -1,0 +1,11 @@
+runtime: python27
+api_version: 1
+threadsafe: true
+handlers:
+  - url: /server/.*
+    script: server.main.app
+  - url: /
+    static_files: dist/address-book/index.html
+    upload: dist/address-book/index.html
+  - url: /
+    static_dir: dist/address-book
